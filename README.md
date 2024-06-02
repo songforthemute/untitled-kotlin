@@ -77,3 +77,49 @@ println(e) // hello
 | Lists | 순서가 있는 컬렉션                 |
 | Sets | 고유한 비순차적 컬렉션               |
 | Maps | 하나의 값에만 매핑되는 고유한 키-값 세트 집합 |
+- 각 컬렉션 타입은 <u>mutable</u>하거나 <u>read-only</u>일 수 있음
+
+#### List
+```kt
+// Read only list
+val readOnlyShapes = listOf("triangle", "square", "circle")
+println(readOnlyShapes) // [triangle, square, circle]
+
+// Mutable list with explicit type declaration
+val shapes: MutableList<String> = mutableListOf("triangle", "square", "circle")
+println(shapes) // [triangle, square, circle]
+
+println(shapes[0]) // triangle
+println("${shapes.first()}, ${shapes.last()}") // triangle, circle
+
+println(readOnlyShapes.count()) // 3
+
+println("circle" in readOnlyShapes) // true
+
+shapes.add("pentagon")
+println(shapes) // [triangle, square, circle, pentagon]
+
+shapes.remove("pentagon")
+println(shapes) // [triangle, square, circle]
+```
+- 아이템을 추가한 순서대로 나열
+- 중복 아이템 허용
+- 리스트를 생성할 때, Kotlin은 저장된 아이템의 타입 추론
+- 목록의 항목에 액세스하려면 인덱스 연산자 `[]` 사용
+- `listOf()` 읽기 전용 리스트 생성
+- `mutableListOf()` 변경 가능한 리스트 생성
+- `.first()`, `.last()` 리스트의 첫/마지막 아이템에 접근
+  - [확장 함수(extension functions)](https://kotlinlang.org/docs/extensions.html#extension-functions)
+- `.count()` 리스트의 길이 반환
+- `in` 리스트가 해당 아이템을 가지고 있는지 검사하는 연산자
+- `.add()`, `.remove()` 특정 아이템을 리스트에 추가/삭제
+
+##### Casting
+```kt
+val shapes: MutableList<String> = mutableListOf("triangle", "square", "circle")
+val shapesLocked: List<String> = shapes
+```
+- 원치 않는 수정을 방지하기 위해 `mutableList`를 `list`에 할당해서 read-only를 얻을 수 있음
+
+#### Set
+- 
