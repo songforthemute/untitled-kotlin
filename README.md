@@ -6,7 +6,8 @@
 1. [Hello world](#hello-world)
 2. [Basic types](#basic-types)
 3. [Collections](#collections)
-4. [Functions](#functions)
+4. [Control Flow](#control-flow)
+5. [Functions](#functions)
 
 ### Hello world
 #### 1. Hello world
@@ -194,9 +195,9 @@ println(200 in readOnlyJuiceMenu.values) // false
 - `.keys`, `.values` 맵에 존재하는 키/값 목록을 리스트로 반환
   - `.keys`, `.values` 는 객체의 프로퍼티
 
-#### Control Flow
-##### Conditional Expressions
-###### **`if`**
+### Control Flow
+#### Conditional Expressions
+##### **`if`**
 ```kt
 val d: Int
 val check: Boolean = true
@@ -213,7 +214,7 @@ val a = 1
 val b = 2
 pinrtln(if (a > b) a else b) // 2
 ```
-###### **`when`**
+##### **`when`**
 ```kotlin
 val obj = "Hello"
 
@@ -298,8 +299,58 @@ fun hello() {
     return println("Hello, world!")
 }
 
+hello() // Hello, world!
+
+fun sum(x: Int, y: Int): Unt {
+    return x + y
+}
+
+println(sum(1, 2)) // 3
+```
+
+#### Named arguments
+```kt
+fun printMessageWithPrefix(message: String, prefix: String) {
+    println("[$prefix] $message")
+}
+
 fun main() {
-    hello() // Hello, world!
+    // Use named argumnets with swapped parameter order
+    printMessageWithPrefix(prefix = "Log", message = "Hello")
+    // [Log] Hello 
 }
 ```
-- `fun` 키워드로 함수 선언
+- 매개변수 이름을 포함하면 어떤 순서로든 매개변수를 작성 가능
+
+#### Default parameter
+```kotlin
+fun printMessageWithPrefix(message: String, prefix: String = "Info") {
+  println("[$prefix] $message")
+}
+
+printMessageWithPrefix("Hello", "Log") // [Log] Hello
+printMessageWithPrefix("Hello") // [Info] Hello
+printMessageWithPrefix(prefix = "Log", message = "Hello") // [Log] Hello
+```
+
+#### Functions without return
+```kt
+fun printMessage(message: String) {
+    println(message)
+    // `return Unit` or `return` is optional
+}
+
+printMessage("Hello") // Hello
+```
+- 함수가 useful value를 반환하지 않는 경우, `Unit` 타입 반환
+- `Unit` 타입은 값이 단 하나만 있는 타입
+- 함수 본문에서 `Unit`이 반환된다는 것을 명시할 필요는 없음
+
+#### Single-expression functions
+```kotlin
+fun sum1(x: Int, y: Int): Int {
+    return x + y
+}
+
+fun sum2(x: Int, y: Int) = x + y
+```

@@ -12,6 +12,18 @@ fun main(args: Array<String>) {
     // refactorPizza()
     // fizzbuzz()
     // startsWithL()
+
+    val p1 = circleArea(2)
+    println(p1)
+
+    val p2: List<Int> = listOf(
+        intervalInSeconds(1, 20, 15),
+        intervalInSeconds(minutes = 1, seconds = 25),
+        intervalInSeconds(hours = 2),
+        intervalInSeconds(minutes = 10),
+        intervalInSeconds(hours = 1, seconds = 1)
+    )
+    println(p2)
 }
 
 fun hello(name: String, age: Int) {
