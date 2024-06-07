@@ -447,3 +447,54 @@ println(listOf(1, 2, 3).fold(0) { x, item -> x + item }) // 6
 ```kotlin
 class Customer
 ```
+
+#### Properties
+```kotlin
+class Contact(val id: Int, var email: String = "example@gmail.com") {
+   val category: String = "work
+}
+```
+- 클래스 인스턴스가 생성된 후 변경해야 하는 경우가 아니라면, 프로퍼티를 read-only(`val`)로 선언하는 것이 좋음
+- 괄호 안에 `val`, `var` 없이 프로퍼티를 선언할 수 있지만, 인스턴스가 생성된 후에는 이러한 프로퍼티에 액세스 불가
+- 소괄호 내 포함된 콘텐츠를 **클래스 헤더**라고 함
+- 클래스 속성을 선언할 때 [후행 쉼표](https://kotlinlang.org/docs/coding-conventions.html#trailing-commas)를 사용할 수 있음
+
+#### Create instance
+```kotlin
+class Contact(val id: Int, var email: String)
+
+fun main() {
+   val contact = Contact(1, "mary@gmail.com")
+}
+```
+- 클래스에서 객체를 생성하려면, [생성자(constructor)](https://kotlinlang.org/docs/classes.html#constructors)를 이용해 클래스 인스턴스 선언
+- 기본적으로 Kotlin은 클래스 헤더에 선언된 매개 변수를 사용해 생성자 자동 생성
+- Kotlin 클래스에는 사용자가 직접 정의한 생성자를 포함해 여러 생성자가 존재 가능
+
+#### Access properties
+```kotlin
+class Contact(val id: Int, var email: String)
+
+fun main() {
+   val contact = Contact(1, "mary@gmail.com")
+
+   // Prints the value of property: email
+   println(contact.email) // mary@gmail.com
+
+   // Updates the value of the property: email
+   contact.email = "jane@gmail.com"
+
+   // Prints the new value of the property: email
+   println(contact.email)
+   // jane@gmail.com
+   
+   println("Their email address is: ${contact.email}")
+}
+```
+
+#### Member functions
+```kotlin
+class Contact () {
+
+}
+```
