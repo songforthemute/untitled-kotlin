@@ -29,6 +29,16 @@
    - [Invoke separately](#invoke-separately)
    - [Trailing lambdas](#trailing-lambdas)
 6. [Classes](#classes)
+   - [Properties](#properties)
+   - [Create instance](#create-instance)
+   - [Access properties](#access-properties)
+   - [Member functions](#member-functions)
+   - [Data classes](#data-classes)
+     - [Print as string](#print-as-string)
+     - [Compare instances](#compare-instances)
+     - [Copy Instance](#copy-instance)
+7. [Null safety](#null-safety)
+    - [Nullable types](#nullable-types)
 
 ### Hello world
 #### 1. Hello world
@@ -494,7 +504,80 @@ fun main() {
 
 #### Member functions
 ```kotlin
-class Contact () {
+class Contact (val id: Int, var email: String) {
+    fun printId() {
+        println(id)
+    }
+}
 
+fun main() {
+    val contact = Contact(1, "mary@gmail.com")
+    // Calls member function printId()
+    contact.printId()
+    // 1
 }
 ```
+- 객체 특성의 일부로 프로퍼티를 선언하는 것 외에도 멤버 함수를 사용해 객체의 동작을 정의할 수 있음
+
+#### Data classes
+```kotlin
+data class User(val name: String, val id: Int)
+```
+
+| Functions          | Description                         |
+|--------------------|-------------------------------------|
+| `.toString()`      | 클래스 인스턴스와 그 프로퍼티를 문자열로 출력           |
+| `.equals()` or `==` | 클래스의 인스턴스 비교                        |
+| `.copy()` | 다른 속성을 가진 클래스 인스턴스를 복사해 클래스 인스턴스 생성 |
+
+- 데이터 클래스는 클래스와 동일한 기능을 갖지만, 멤버 함수가 자동으로 제공됨
+- 이러한 함수는 자동으로 사용할 수 있으므로 보일러플레이트를 작성할 필요가 없음
+
+##### Print as string
+```kotlin
+val user = User("Alex", 1)
+
+// Automatically uses toString() function so that output is easy to read
+println(user) // User(name=Alex, id=1)
+```
+
+##### Compare instances
+```kotlin
+val user = User("Alex", 1)
+val secondUser = User("Alex", 1)
+val thirdUser = User("Max", 2)
+
+// Compares user to second user
+println("user === secondUser: ${user == secondUser}") // user == secondUser: true
+
+// Compares user to third user
+println("user == thirdUser: ${user == thirdUser}") // user == thirdUser: false
+```
+
+##### Copy instance
+```kotlin
+val user = User("Alex", 1)
+val secondUser = User("Alex", 1)
+val thirdUser = User("Max", 2)
+
+// Create an exact copy of user
+println(user.copy()) // User(name=Alex, id=1)
+
+// Creates a copy of user with name: "Max"
+println(user.copy("Max")) // User(name=Max, id=1)
+
+// Creates a copy of user with id: 3
+println(user.copy(id = 3)) // User(name=Alex, id=3)
+```
+- 데이터 클래스 인스턴스의 정확한 복사본을 만들려면 인스턴스에서 `.copy()` 함수를 호출
+- 데이터 클래스 인스턴스의 복사본을 만들고 일부 속성을 변경하려면, 인스턴스 `.copy()` 함수를 호출하고 속성의 대체 값을 함수 매개 변수로 추가
+- 인스턴스의 복사본을 만드는 것이, 원본 인스턴스를 수정하는 것보다 안전함
+  - 원본 인스턴스에 의존하는 모든 코드는 복사본과 복사본으로 수행하는 작업의 영향을 받지 않기 때문
+  - [Data classes docs](https://kotlinlang.org/docs/data-classes.html)
+
+### Null safety
+- Kotlin에서는 `null` 값을 가질 수 있음
+- 프로그램에서 `null`값으로 인한 문제를 방지하기 위해 Kotlin에는 null safety 기능 존재
+- null safety는 런타임이 아닌, 컴파일 시점에 null 값의 잠재적 문제를 감지함
+
+#### Nullable types

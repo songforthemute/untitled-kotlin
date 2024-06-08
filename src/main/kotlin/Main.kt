@@ -25,11 +25,24 @@ fun main(args: Array<String>) {
 //    )
 //    println(p2)
 
-    lambda1()
+//    lambda1()
+//
+//    repeatN(5) {
+//        println("Hello")
+//    }
 
-    repeatN(5) {
-        println("Hello")
-    }
+    val emp = Empolyee("Mary", 20)
+    println(emp)
+    emp.salary += 10
+    println(emp)
+
+    val empGen = RandomEmpolyeeGenerator(10, 30)
+    println(empGen.generateEmpolyee())
+    println(empGen.generateEmpolyee())
+    println(empGen.generateEmpolyee())
+    empGen.minSalary = 50
+    empGen.maxSalary = 100
+    println(empGen.generateEmpolyee())
 }
 
 fun hello(name: String, age: Int) {
