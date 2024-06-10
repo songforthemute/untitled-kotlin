@@ -31,18 +31,20 @@ fun main(args: Array<String>) {
 //        println("Hello")
 //    }
 
-    val emp = Empolyee("Mary", 20)
-    println(emp)
-    emp.salary += 10
-    println(emp)
+//    val emp = Empolyee("Mary", 20)
+//    println(emp)
+//    emp.salary += 10
+//    println(emp)
+//
+//    val empGen = RandomEmpolyeeGenerator(10, 30)
+//    println(empGen.generateEmpolyee())
+//    println(empGen.generateEmpolyee())
+//    println(empGen.generateEmpolyee())
+//    empGen.minSalary = 50
+//    empGen.maxSalary = 100
+//    println(empGen.generateEmpolyee())
 
-    val empGen = RandomEmpolyeeGenerator(10, 30)
-    println(empGen.generateEmpolyee())
-    println(empGen.generateEmpolyee())
-    println(empGen.generateEmpolyee())
-    empGen.minSalary = 50
-    empGen.maxSalary = 100
-    println(empGen.generateEmpolyee())
+    println((1..5).sumOf { id -> salaryById(id) })
 }
 
 fun hello(name: String, age: Int) {

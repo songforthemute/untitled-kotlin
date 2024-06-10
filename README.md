@@ -39,6 +39,9 @@
      - [Copy Instance](#copy-instance)
 7. [Null safety](#null-safety)
     - [Nullable types](#nullable-types)
+    - [Check for null values](#check-for-null-values)
+    - [Use safe calls](#use-safe-calls)
+    - [Use Elvis operator](#use-elvis-operator)
 
 ### Hello world
 #### 1. Hello world
@@ -654,5 +657,5 @@ fun main() {
     println(nullString?.length ?: 0) // 0
 }
 ```
-- elvis 연산자 `?:`를 사용하여 null 값이 감지될 경우 반환할 기본값을 제공 가느ㅜㅇ
+- elvis 연산자 `?:`를 사용하여 null 값이 감지될 경우 반환할 기본값을 제공 가능
 - elvis 연산자의 왼쪽에 null 값에 대해 검사해야 할 항목을 적고, 오른쪽에 null 값이 감지되면 반환해야 할 값을 작성
