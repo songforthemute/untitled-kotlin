@@ -581,3 +581,78 @@ println(user.copy(id = 3)) // User(name=Alex, id=3)
 - null safety는 런타임이 아닌, 컴파일 시점에 null 값의 잠재적 문제를 감지함
 
 #### Nullable types
+```kotlin
+fun main() {
+    // neverNull has String type
+    var neverNull: String = "This can't be null"
+
+    // Throws a compiler error
+    neverNull = null
+
+    // nullable has nullable String type
+    var nullable: String? = "You can keep a null here"
+
+    // This is OK
+    nullable = null
+
+    // By default, null values aren't accepted
+    var inferredNonNull = "The compiler assumes non-nullable"
+
+    // Throws a compiler error
+    inferredNonNull = null
+
+    // notNull does not accept null values
+    fun strLength(notNull: String): Int {
+        return notNull.length
+    }
+    
+    println(strLength(neverNull)) // 18
+    println(strLength(nullable)) // Throws a compiler error
+}
+```
+- Kotlin은 선언된 타입이 null 값을 가질 가능성을 허용하는 nullable 타입을 지원
+- 기존적으로 타입은 null 값을 허용하지 않음
+- nullable 타입은 타입 선언 뒤에 명시적으로 `?`를 추가하여 선언
+
+#### Check for null values
+```kotlin
+fun describeString(maybeString: String?): String {
+    if (maybeString != null && maybeString.length > 0) {
+        return "String of length ${maybeString.length}"
+    } else {
+        return "Empty or null string"
+    }
+}
+
+fun main() {
+    val nullString: String? = null
+    println(describeString(nullString)) // Empty of null string
+}
+```
+- 조건식 내에서 null 값의 존재 여부를 확인 가능
+
+#### Use safe calls
+```kotlin
+fun lengthString(maybeString: String?) :Int? = maybeString?.length
+
+fun main() {
+    val nullString: String? = null
+    println(lengthString(nullString)) // null
+    
+    println(nullString?.uppercase()) // null
+}
+```
+- null 값을 포함할 수 있는 객체의 프로퍼티에 안전하게 액세스하려면, safe call 연산자 `?.` 사용
+- safe call 연산자는 객체 또는 액세스한 속성 중 하나가 null인 경우, null을 반환
+  - 확장 또는 멤버 함수를 안전하게 호출하는 데도 사용 가능
+- 코드에서 오류를 유발하는 null 값의 존재를 방지하려는 경우 유용
+
+#### Use Elvis operator
+```kotlin
+fun main() {
+    val nullString: String? = null
+    println(nullString?.length ?: 0) // 0
+}
+```
+- elvis 연산자 `?:`를 사용하여 null 값이 감지될 경우 반환할 기본값을 제공 가느ㅜㅇ
+- elvis 연산자의 왼쪽에 null 값에 대해 검사해야 할 항목을 적고, 오른쪽에 null 값이 감지되면 반환해야 할 값을 작성
