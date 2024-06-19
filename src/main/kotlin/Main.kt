@@ -1,5 +1,5 @@
 import functions.log
-import `special-classes`.doColorEnumClasses
+import `special-classes`.doObjectKeyword
 
 fun main(args: Array<String>) {
     println("Hello World!")
@@ -7,7 +7,8 @@ fun main(args: Array<String>) {
     log("Hello", "Hallo", "Salut", "Hola", "你好")
 
 //    doDataClasses()
-    doColorEnumClasses()
+//    doColorEnumClasses()
+    doObjectKeyword()
 }
 
 //fun main(args: Array<String>) {
