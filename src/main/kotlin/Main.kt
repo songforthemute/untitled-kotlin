@@ -1,9 +1,13 @@
 import functions.log
+import `special-classes`.doColorEnumClasses
 
 fun main(args: Array<String>) {
     println("Hello World!")
 
     log("Hello", "Hallo", "Salut", "Hola", "你好")
+
+//    doDataClasses()
+    doColorEnumClasses()
 }
 
 //fun main(args: Array<String>) {
