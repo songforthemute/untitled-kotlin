@@ -62,7 +62,7 @@ object DoAuth {
     }
 }
 
-fun doDoAuth {
+fun doDoAuth() {
     DoAuth.takeParams("foo", "qwerty") // input Auth params: foo:qwerty
 }
 
