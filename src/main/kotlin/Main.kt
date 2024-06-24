@@ -1,5 +1,5 @@
+import collections.doMap
 import functions.log
-import `special-classes`.doObjectKeyword
 
 fun main(args: Array<String>) {
     println("Hello World!")
@@ -8,7 +8,9 @@ fun main(args: Array<String>) {
 
 //    doDataClasses()
 //    doColorEnumClasses()
-    doObjectKeyword()
+//    doObjectKeyword()
+//    doExtensionFunctions()
+    doMap()
 }
 
 //fun main(args: Array<String>) {
