@@ -1,4 +1,5 @@
-import collections.doMap
+import collections.doGetOrElse
+import collections.doGetOrElse2
 import functions.log
 
 fun main(args: Array<String>) {
@@ -10,7 +11,14 @@ fun main(args: Array<String>) {
 //    doColorEnumClasses()
 //    doObjectKeyword()
 //    doExtensionFunctions()
-    doMap()
+//    doMap()
+//    doAssociateGroup()
+//    doPartition()
+//    doSorted()
+//    doMapElementAccess()
+//    doZip()
+    doGetOrElse()
+    doGetOrElse2()
 }
 
 //fun main(args: Array<String>) {
