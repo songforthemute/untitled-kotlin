@@ -1,6 +1,5 @@
-import collections.doGetOrElse
-import collections.doGetOrElse2
 import functions.log
+import `scope-functions`.doAlso
 
 fun main(args: Array<String>) {
     println("Hello World!")
@@ -17,8 +16,11 @@ fun main(args: Array<String>) {
 //    doSorted()
 //    doMapElementAccess()
 //    doZip()
-    doGetOrElse()
-    doGetOrElse2()
+//    doGetOrElse()
+//    doGetOrElse2()
+//    doLet()
+//    doRun()
+    doAlso()
 }
 
 //fun main(args: Array<String>) {
