@@ -1,5 +1,5 @@
+import delegation.doStandardDelegates
 import functions.log
-import `scope-functions`.doAlso
 
 fun main(args: Array<String>) {
     println("Hello World!")
@@ -20,7 +20,9 @@ fun main(args: Array<String>) {
 //    doGetOrElse2()
 //    doLet()
 //    doRun()
-    doAlso()
+//    doAlso()
+//    doDelegationPattern()
+    doStandardDelegates()
 }
 
 //fun main(args: Array<String>) {
